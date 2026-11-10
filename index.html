@@ -153,6 +153,20 @@ kbd { display: inline-block; min-width: 22px; padding: 0 6px; border: 1px solid 
 .flow .chip { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: var(--bg-2); color: var(--ink); font-weight: 600; }
 .flow svg { width: 18px; height: 18px; }
 
+.howto { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.howto-col { background: var(--bg-2); border-radius: var(--radius); padding: 28px; }
+.howto-col h3 { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; font-size: 19px; letter-spacing: -0.02em; }
+.howto-col h3 svg { width: 22px; height: 22px; color: var(--brand); }
+.howto-col ol { margin: 0; padding: 0; list-style: none; counter-reset: h; display: grid; gap: 14px; }
+.howto-col li { counter-increment: h; display: grid; grid-template-columns: 26px 1fr; gap: 10px; color: var(--ink-2); font-size: 16px; }
+.howto-col li::before { content: counter(h); display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 1px solid var(--line); color: var(--brand); font-weight: 700; font-size: 14px; }
+.howto-col b { color: var(--ink); font-weight: 600; }
+.howto-figs { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+.howto-figs figure { margin: 0; }
+.howto-figs img { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 6px 18px rgba(20,22,40,.08); }
+.howto-figs figcaption { margin-top: 8px; font-size: 13px; color: var(--ink-3); text-align: center; }
+.howto-note { margin: 18px 0 0; color: var(--ink-3); font-size: 14px; max-width: 52em; }
+
 /* ---------- 요금 ---------- */
 .pricing { background: var(--bg-2); }
 .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 48px; max-width: 860px; }
@@ -200,6 +214,25 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
 .final-cta { display: flex; align-items: center; justify-content: center; gap: 24px; }
 .final-qr { width: 112px; height: 112px; padding: 8px; border-radius: 14px; background: #fff; }
 
+/* ---------- PC 설치 방법 ---------- */
+.install { background: var(--night); color: #f2f2f5; padding-top: 0; }
+.install-box { border-top: 1px solid #262833; padding-top: 72px; }
+.install .kicker { color: var(--amber); }
+.install .sub { color: #a9abb8; }
+.steps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: st; }
+.steps li { background: #1b1c23; border: 1px solid #2a2c36; border-radius: var(--radius); padding: 24px; counter-increment: st; }
+.steps li::before { content: counter(st); display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--amber); color: #1a1405; font-weight: 800; font-size: 15px; margin-bottom: 16px; }
+.steps h3 { margin: 0 0 8px; font-size: 18px; color: #fff; letter-spacing: -0.02em; }
+.steps p { margin: 0; color: #a9abb8; font-size: 15px; }
+.steps .opt { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; background: #2a2c36; color: #c9cad3; font-size: 12px; font-weight: 600; vertical-align: 2px; }
+.steps .ui { display: inline-flex; align-items: center; gap: 4px; padding: 0 7px; border-radius: 6px; background: #2a2c36; color: #e6e6ea; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.steps .ui svg { width: 13px; height: 13px; }
+.needs { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px 22px; color: #a9abb8; font-size: 14px; }
+.needs b { color: #e6e6ea; font-weight: 600; }
+.install-cta { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.soon-link { color: var(--amber); font-weight: 600; font-size: 15px; text-decoration: none; margin-left: 14px; }
+.soon-link:hover { text-decoration: underline; }
+
 /* ---------- 좁은 화면 ---------- */
 @media (max-width: 920px) {
   nav { display: none; }
@@ -209,8 +242,10 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
   .phone { width: 210px; }
   .devices .phone.a { right: auto; left: 4%; }
   .devices .phone.b { right: 4%; }
-  .feature-grid, .sync-grid { grid-template-columns: 1fr; }
+  .feature-grid, .sync-grid, .howto { grid-template-columns: 1fr; }
   .plans { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .install-box { padding-top: 56px; }
   section { padding: 72px 0; }
 }
 @media (hover: none) and (pointer: coarse), (max-width: 700px) {
@@ -230,6 +265,8 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
   .panel { padding: 14px; gap: 8px; }
   .row { font-size: 13px; padding: 10px; }
   .seg { font-size: 12px; }
+  .steps { grid-template-columns: 1fr; }
+  .soon-link { display: block; margin: 14px 0 0; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
 </style>
@@ -291,7 +328,7 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
         <article class="card">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9.5a5 5 0 0 1 10 0c0 3-2.5 3.6-3 6s-1.3 4.5-3.8 4.5"/><path d="M10 10a2 2 0 0 1 4 0c0 1.2-1 1.5-1.4 2.4"/></svg></div>
           <h3>안 들리면 들리니</h3>
-          <p>실제로 소리 나는 대로 받아 적고, 연음·축약·생략이 왜 그렇게 들리는지 알려 줘요.</p>
+          <p>안 들린 구간의 소리를 AI가 받아 적고, 연음·축약·생략이 왜 그렇게 들리는지 발음 규칙으로 알려 줘요.</p>
           <div class="shot"><img src="assets/deullini.jpg" alt="들리니 화면: 소리 나는 대로 적은 발음과 이유" loading="lazy"></div>
         </article>
         <article class="card">
@@ -313,10 +350,10 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
         <ul class="points">
           <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 12l4 4 8-8"/></svg></span><div><b>대사 패널과 이중 자막</b><span>지금 문장이 강조되고, 누르면 그 장면으로 이동해요.</span></div></li>
           <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 12l4 4 8-8"/></svg></span><div><b>키보드로 쉐도잉</b><span><kbd>A</kbd> 이전 · <kbd>S</kbd> 다시 · <kbd>D</kbd> 다음 · <kbd>W</kbd> 반복 · <kbd>Q</kbd> 영어 가리기</span></div></li>
-          <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 12l4 4 8-8"/></svg></span><div><b>들리니와 표현 설명</b><span>한글 발음·영어식 표기·IPA로 소리를 보고, 표현은 AI가 설명해요.</span></div></li>
+          <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 12l4 4 8-8"/></svg></span><div><b>들리니(발음 규칙)와 표현 설명</b><span>자막 문장을 발음 규칙으로 풀어 한글 발음·영어식 표기·IPA로 보여 줘요. 소리를 받아 적는 앱 들리니와 달리 영상 소리는 듣지 않아요. 표현은 AI가 설명해요.</span></div></li>
           <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 12l4 4 8-8"/></svg></span><div><b>저장한 문장은 폰에서도</b><span>같은 구글 계정으로 로그인하면 폰 앱의 저장 목록에 함께 모여요.</span></div></li>
         </ul>
-        <span class="soon"><i></i>크롬 웹 스토어 출시 준비 중</span>
+        <span class="soon"><i></i>크롬 웹 스토어 출시 준비 중</span><a class="soon-link" href="#install">설치 방법 보기 →</a>
       </div>
 
       <div class="browser" role="img" aria-label="PC 확장 프로그램 화면 예시: 영상 아래 영어·한국어 자막, 오른쪽에 대사 목록">
@@ -340,6 +377,26 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
     </div>
   </section>
 
+  <section class="install" id="install">
+    <div class="wrap install-box">
+      <div class="kicker">설치 방법</div>
+      <h2>1분이면 끝나요</h2>
+      <p class="sub">PC 크롬 브라우저에 한 번만 추가하면, 넷플릭스·유튜브를 열 때마다 자동으로 켜져요.</p>
+      <ol class="steps">
+        <li><h3>크롬 웹 스토어에서 추가</h3><p>스크린 영어 쉐도잉 페이지에서 <span class="ui">Chrome에 추가</span>를 누르고, 다시 <span class="ui">확장 프로그램 추가</span>를 눌러요.</p></li>
+        <li><h3>툴바에 고정</h3><p>주소창 오른쪽 <span class="ui"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4a2 2 0 1 1 4 0v2h4v4h-2a2 2 0 1 0 0 4h2v4h-4v-2a2 2 0 1 0-4 0v2H6v-4H4a2 2 0 1 1 0-4h2V6h4z"/></svg>확장 프로그램</span> 아이콘을 누르고, 스크린 영어 쉐도잉 옆 <span class="ui"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5M9 3h6l-1 6 3 3v2H7v-2l3-3z"/></svg>고정</span>을 눌러요.</p></li>
+        <li><h3>영상 틀기</h3><p>넷플릭스나 유튜브에서 영어 자막이 있는 영상을 틀면, 화면 오른쪽에 대사 패널이 나와요.</p></li>
+        <li><h3>구글 로그인<span class="opt">선택</span></h3><p>툴바 아이콘을 눌러 앱과 같은 구글 계정으로 로그인하면, 저장 문장과 프리미엄이 함께 이어져요.</p></li>
+      </ol>
+      <div class="needs">
+        <span><b>필요한 것</b> PC(Windows·Mac)의 크롬 브라우저</span>
+        <span><b>영상</b> 본인 계정의 넷플릭스·유튜브, 자막이 있는 영상</span>
+        <span><b>끄고 켜기</b> 툴바 아이콘에서 사이트별로</span>
+      </div>
+      <div class="install-cta"><span class="soon"><i></i>크롬 웹 스토어 출시 준비 중</span></div>
+    </div>
+  </section>
+
   <section id="sync">
     <div class="wrap">
       <div class="kicker">폰과 PC를 하나로</div>
@@ -355,6 +412,33 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9h16l-4-4M20 15H4l4 4"/></svg>
         <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/></svg>PC 크롬</span>
       </div>
+      <div class="howto" id="sync-how">
+        <div class="howto-col">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/></svg>폰 앱에서</h3>
+          <ol>
+            <li><span>아래쪽 <b>마이</b> 탭을 열어요.</span></li>
+            <li><span><b>구글 로그인 (선택)</b> 옆 <b>로그인</b>을 누르고 구글 계정을 골라요.</span></li>
+            <li><span>PC에서 저장한 문장은 <b>즐겨찾기 → PC</b>에서 볼 수 있어요.</span></li>
+          </ol>
+          <div class="howto-figs">
+            <figure><img src="assets/sync-app-login.webp" alt="앱 마이 탭의 구글 계정 카드" loading="lazy"><figcaption>마이 탭 → 구글 로그인</figcaption></figure>
+            <figure><img src="assets/sync-app-pc.webp" alt="앱 즐겨찾기의 PC 탭에 모인 넷플릭스·유튜브 문장" loading="lazy"><figcaption>즐겨찾기 → PC</figcaption></figure>
+          </div>
+        </div>
+        <div class="howto-col">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/></svg>PC 크롬에서</h3>
+          <ol>
+            <li><span>주소창 오른쪽 툴바의 <b>스크린 영어 쉐도잉</b> 아이콘을 눌러요.</span></li>
+            <li><span><b>구글로 로그인</b>을 누르고 폰과 <b>같은 계정</b>을 골라요.</span></li>
+            <li><span>폰에서 저장한 문장은 대사 패널의 <b>저장됨</b> 탭에 함께 나와요.</span></li>
+          </ol>
+          <div class="howto-figs">
+            <figure><img src="assets/sync-pc-login.webp" alt="확장 프로그램 팝업의 구글로 로그인 버튼" loading="lazy"><figcaption>툴바 아이콘 → 구글로 로그인</figcaption></figure>
+            <figure><img src="assets/sync-pc-saved.webp" alt="대사 패널의 저장됨 탭" loading="lazy"><figcaption>대사 패널 → 저장됨</figcaption></figure>
+          </div>
+        </div>
+      </div>
+      <p class="howto-note">저장한 문장은 앱을 열 때와 PC에서 영상을 열 때 자동으로 맞춰져요. 바로 맞추고 싶으면 앱 마이 탭의 계정 메뉴나 PC 툴바 아이콘에서 <b>지금 동기화</b>를 누르세요. 로그아웃하면 다른 기기에서 가져온 문장은 사라지고, 그 기기에서 직접 저장한 문장은 그대로 남아요.</p>
     </div>
   </section>
 
@@ -371,7 +455,8 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
             <li>문장 반복·속도 조절·이중 자막</li>
             <li>문장 저장과 메모</li>
             <li>AI 표현 설명 <b>하루 5번</b></li>
-            <li>들리니 받아쓰기 <b>30초 구간</b></li>
+            <li>앱 들리니 받아쓰기 <b>하루 5번 · 30초</b></li>
+            <li>PC 들리니(발음 규칙) <b>무제한</b></li>
           </ul>
         </div>
         <div class="plan pro">
@@ -380,7 +465,7 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
           <ul>
             <li>무료 기능 전부</li>
             <li>AI 표현 설명 <b>하루 200번</b></li>
-            <li>들리니 받아쓰기 <b>1분 구간</b></li>
+            <li>앱 들리니 받아쓰기 <b>하루 30번 · 1분</b></li>
             <li>PC 확장 프로그램에서도 <b>함께 적용</b></li>
           </ul>
         </div>
@@ -404,6 +489,10 @@ a:focus-visible, summary:focus-visible { outline: 3px solid rgba(76,88,214,.5); 
         <details>
           <summary>꼭 로그인해야 하나요?</summary>
           <p>아니요. 회원가입 없이 모든 기능을 쓸 수 있어요. 폰과 PC에서 저장한 문장을 함께 보고 싶을 때만 구글 로그인을 하시면 돼요.</p>
+        </details>
+        <details>
+          <summary>앱 들리니와 PC 들리니는 뭐가 달라요?</summary>
+          <p>앱 들리니는 고른 구간의 실제 소리를 AI가 받아 적은 뒤, 왜 그렇게 들리는지 발음 규칙으로 설명해요. PC 들리니는 영상 소리를 듣지 않고, 넷플릭스·유튜브 자막 문장을 발음 규칙으로 계산해 보여 줘요. 그래서 PC 들리니는 무료·무제한이고, 배우가 실제로 낸 소리와는 조금 다를 수 있어요.</p>
         </details>
         <details>
           <summary>아이폰에서도 쓸 수 있나요?</summary>
